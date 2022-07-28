@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'drf_yasg',
+    'rest_framework.authtoken',
+    'django_filters',
     'account',
     'cart',
     'product',
@@ -80,8 +83,12 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'shop2',
+        'USER': 'admins',
+        'PASSWORD': '1',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
