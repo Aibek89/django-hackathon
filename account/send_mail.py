@@ -6,6 +6,6 @@ def send_confirmation_email(code, email):
     send_mail(
         'From shop project',
         full_link,
-        'aibekemil.8989@gmail.com',
+        'bshabyev@gmail.com',
         [email]
     )

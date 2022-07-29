@@ -27,11 +27,10 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-<<<<<<< HEAD
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-=======
+
+
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
->>>>>>> 52f821449e284282144b402de9843161845f312a
+
 
 
 # Application definition
@@ -90,19 +89,12 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-<<<<<<< HEAD
-        'NAME': 'shop2',
-        'USER': 'admins',
-        'PASSWORD': '1',
-        'HOST': 'localhost',
-        'PORT': '5432'
-=======
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': 5432
->>>>>>> 52f821449e284282144b402de9843161845f312a
+
     }
 }
 
