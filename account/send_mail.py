@@ -2,9 +2,9 @@ from django.core.mail import send_mail
 
 
 def send_confirmation_email(code, email):
-    full_link = f'http://localhost:8000/api/v1/account/active/{code}'
+    full_link = f'http://localhost:8000/account/activate/{code}'
     send_mail(
-        'From shop project',
+        'From hackathon project',
         full_link,
 
         'bshabyev@gmail.com',
