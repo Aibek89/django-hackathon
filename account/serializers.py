@@ -27,3 +27,13 @@ class RegisterSerializer(serializers.ModelSerializer):
         code = user.activation_code
         send_confirmation_email(code, user.email)
         return user
+
+
+class LoginSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(required=True)
+    password = serializers.CharField(required=True)
+
+
+    class Meta:
+        model = User
+        fields = ['email', 'password']
