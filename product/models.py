@@ -37,7 +37,7 @@ class Review(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
     text = models.TextField()
-    time = models.DateTimeField()
+    time = models.DateTimeField(auto_now_add=True)
 
 
 class Image(models.Model):
@@ -48,7 +48,7 @@ class Image(models.Model):
 class Rating(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='rating', verbose_name='raiting owner')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='rating', verbose_name='product')
-    rating = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)], default=0 )
+    rating = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)], default=0)
 
     def __str__(self):
         return f'{self.product} {self.rating}'
