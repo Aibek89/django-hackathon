@@ -33,7 +33,7 @@ class Product(models.Model):
         return self.name
 
 
-class Reviews(models.Model):
+class Review(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
     text = models.TextField()
