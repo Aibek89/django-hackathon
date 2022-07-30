@@ -149,3 +149,13 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':
+    [
+        'rest_framework.authentication.TokenAuthentication',],
+
+        'DEFAULT_FILTER_BACKENDS': [
+                                       'django_filters.rest_framework.DjangoFilterBackend'
+    ]
+}
