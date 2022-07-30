@@ -24,7 +24,7 @@ schema_view = get_schema_view(
     openapi.Info(
         title = 'Store',
         default_version = 'v1.0',
-        description = 'Наш первый магазин'),
+        description = 'CompStore'),
     public=True
 )
 
