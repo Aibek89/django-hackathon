@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.db.models import CASCADE
 
 User = get_user_model()
 
@@ -42,22 +43,16 @@ class Review(models.Model):
 
 class Image(models.Model):
     image = models.ImageField(upload_to='products')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
-
-
-class Rating(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='rating', verbose_name='raiting owner')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='rating', verbose_name='product')
-    rating = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)], default=0)
-
-    def __str__(self):
-        return f'{self.product} {self.rating}'
+    product = models.ForeignKey(Product, on_delete=CASCADE, related_name='images')
 
 
 class Like(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='like', verbose_name='like owner')
+    owner = models.ForeignKey(User, on_delete=CASCADE, related_name='like', verbose_name='like owner')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='like', verbose_name='product')
     like = models.BooleanField('like', default=False)
+
+    def __str__(self):
+        return f'{self.product} {self.like}'
 
 
 

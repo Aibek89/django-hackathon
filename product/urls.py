@@ -9,5 +9,5 @@ router.register('review', ReviewView)
 router.register('', ProductView)
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
 ]

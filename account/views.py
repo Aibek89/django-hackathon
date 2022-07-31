@@ -10,7 +10,6 @@ from account.serializers import RegisterSerializer, User, LoginSerializer
 
 class RegisterApiView(APIView):
     def post(self, request):
-        print(dir(request))
         data = request.data
         serializer = RegisterSerializer(data=data)
 
