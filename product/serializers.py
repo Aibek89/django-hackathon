@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from product.models import Category, Product, Image, Rating, Review
+from product.models import Category, Product, Image, Review
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -20,7 +20,7 @@ class ImageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Image
-        fields = ['image']
+        fields = '__all__'
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -37,13 +37,6 @@ class ProductSerializer(serializers.ModelSerializer):
 
         representation['reviews'] = ReviewSerializer(instance.reviews.all(), many=True).data
 
-        result = 0
-        for rating in instance.rating.all():
-            result += int(rating.rating)
-        try:
-            representation['rating'] = result / instance.rating.all().count()
-        except ZeroDivisionError:
-            pass
         return representation
 
     def create(self, validated_data):
@@ -57,15 +50,6 @@ class ProductSerializer(serializers.ModelSerializer):
         return product
 
 
-
-    # def to_representation(self, instance):
-    #     representation = super().to_representation(instance)
-    #     representation['likes'] = instance.likes.filter(like=True).count()
-    #     representation['rating'] = 0
-    #
-    #     return representation
-
-
 class ReviewSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.mail')
 
@@ -74,5 +58,3 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class RatingSerializer(serializers.Serializer):
-    rating = serializers.IntegerField(required=True, min_value=1, max_value=5)

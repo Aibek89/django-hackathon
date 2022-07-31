@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from product.models import Product, Category, Review, Image, Rating
+from product.models import Product, Category, Review, Image
 
 
 class ImageInAdmin(admin.TabularInline):
@@ -9,12 +9,15 @@ class ImageInAdmin(admin.TabularInline):
     max_num = 4
 
 
-class ProsuctAdmn(admin.ModelAdmin):
+class ProductAdmin(admin.ModelAdmin):
     inlines = [ImageInAdmin]
 
 
-admin.site.register(Product)
+admin.site.register(Product, ProductAdmin)
+
+
+# admin.site.register(Product)
 admin.site.register(Category)
 admin.site.register(Review)
 admin.site.register(Image)
-admin.site.register(Rating)
+

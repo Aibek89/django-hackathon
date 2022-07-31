@@ -135,6 +135,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -153,7 +155,7 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES':
     [
-        'rest_framework.authentication.TokenAuthentication',],
+        'rest_framework.authentication.TokenAuthentication'],
 
         'DEFAULT_FILTER_BACKENDS': [
                                        'django_filters.rest_framework.DjangoFilterBackend'
